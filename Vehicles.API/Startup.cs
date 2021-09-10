@@ -22,6 +22,7 @@ namespace Vehicles.API
         {
 
             services.AddControllersWithViews();
+
             services.AddDbContext<DataContext>(x =>
             {
                 x.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
