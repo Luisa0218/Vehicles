@@ -76,9 +76,9 @@ namespace Vehicles.API.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, VehicleType vehicleType)
+        public async Task<IActionResult> Edit(int id, Procedure procedure)
         {
-            if (id != vehicleType.Id)
+            if (id != procedure.Id)
             {
                 return NotFound();
             }
@@ -87,7 +87,7 @@ namespace Vehicles.API.Controllers
             {
                 try
                 {
-                    _context.Update(vehicleType);
+                    _context.Update(procedure);
                     await _context.SaveChangesAsync();
                     return RedirectToAction(nameof(Index));
                 }
@@ -108,7 +108,7 @@ namespace Vehicles.API.Controllers
                 }
 
             }
-            return View(vehicleType);
+            return View(procedure);
         }
 
         // GET: VehicleTypes/Borrar
@@ -119,14 +119,14 @@ namespace Vehicles.API.Controllers
                 return NotFound();
             }
 
-            VehicleType vehicleType = await _context.VehicleTypes
+            Procedure procedure = await _context.Procedures
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (vehicleType == null)
+            if (procedure == null)
             {
                 return NotFound();
             }
 
-            _context.VehicleTypes.Remove(vehicleType);
+            _context.Procedures.Remove(procedure);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
