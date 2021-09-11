@@ -29,13 +29,13 @@ namespace Vehicles.API.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(VehicleType vehicleType)
+        public async Task<IActionResult> Create(DocumentType documentType)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
-                    _context.Add(vehicleType);
+                    _context.Add(documentType);
                     await _context.SaveChangesAsync();
                     return RedirectToAction(nameof(Index));
                 }
@@ -43,7 +43,7 @@ namespace Vehicles.API.Controllers
                 {
                     if (dbUpdateException.InnerException.Message.Contains("duplicate"))
                     {
-                        ModelState.AddModelError(string.Empty, "Ya existe este tipo de vehículo.");
+                        ModelState.AddModelError(string.Empty, "Ya existe este tipo de documento.");
                     }
                     else
                     {
@@ -55,7 +55,7 @@ namespace Vehicles.API.Controllers
                     ModelState.AddModelError(string.Empty, exception.Message);
                 }
             }
-            return View(vehicleType);
+            return View(documentType);
         }
 
         // GET: VehicleTypes/Editar
