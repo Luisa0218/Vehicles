@@ -9,8 +9,8 @@ using Vehicles.API.Data.Entities;
 namespace Vehicles.API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20210911041338_AddTableDocumentTypesIndex")]
-    partial class AddTableDocumentTypesIndex
+    [Migration("20210913030754_AddTableProceduresIndex")]
+    partial class AddTableProceduresIndex
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
