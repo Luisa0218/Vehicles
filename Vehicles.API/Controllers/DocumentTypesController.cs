@@ -66,19 +66,19 @@ namespace Vehicles.API.Controllers
                 return NotFound();
             }
 
-            VehicleType vehicleType = await _context.VehicleTypes.FindAsync(id);
-            if (vehicleType == null)
+            DocumentType documentType = await _context.DocumentTypes.FindAsync(id);
+            if (documentType == null)
             {
                 return NotFound();
             }
-            return View(vehicleType);
+            return View(documentType);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, VehicleType vehicleType)
+        public async Task<IActionResult> Edit(int id, DocumentType documentType)
         {
-            if (id != vehicleType.Id)
+            if (id != documentType.Id)
             {
                 return NotFound();
             }
@@ -87,7 +87,7 @@ namespace Vehicles.API.Controllers
             {
                 try
                 {
-                    _context.Update(vehicleType);
+                    _context.Update(documentType);
                     await _context.SaveChangesAsync();
                     return RedirectToAction(nameof(Index));
                 }
@@ -95,7 +95,7 @@ namespace Vehicles.API.Controllers
                 {
                     if (dbUpdateException.InnerException.Message.Contains("duplicate"))
                     {
-                        ModelState.AddModelError(string.Empty, "Ya existe este tipo de vehículo.");
+                        ModelState.AddModelError(string.Empty, "Ya existe este tipo de documento.");
                     }
                     else
                     {
@@ -108,7 +108,7 @@ namespace Vehicles.API.Controllers
                 }
 
             }
-            return View(vehicleType);
+            return View(documentType);
         }
 
         // GET: VehicleTypes/Borrar
