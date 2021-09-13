@@ -67,19 +67,19 @@ namespace Vehicles.API.Controllers
                 return NotFound();
             }
 
-            DocumentType documentType = await _context.DocumentTypes.FindAsync(id);
-            if (documentType == null)
+            Brand brand = await _context.Brands.FindAsync(id);
+            if (brand == null)
             {
                 return NotFound();
             }
-            return View(documentType);
+            return View(brand);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, DocumentType documentType)
+        public async Task<IActionResult> Edit(int id, Brand brand)
         {
-            if (id != documentType.Id)
+            if (id != brand.Id)
             {
                 return NotFound();
             }
@@ -88,7 +88,7 @@ namespace Vehicles.API.Controllers
             {
                 try
                 {
-                    _context.Update(documentType);
+                    _context.Update(brand);
                     await _context.SaveChangesAsync();
                     return RedirectToAction(nameof(Index));
                 }
@@ -96,7 +96,7 @@ namespace Vehicles.API.Controllers
                 {
                     if (dbUpdateException.InnerException.Message.Contains("duplicate"))
                     {
-                        ModelState.AddModelError(string.Empty, "Ya existe este tipo de documento.");
+                        ModelState.AddModelError(string.Empty, "Ya existe esta marca.");
                     }
                     else
                     {
@@ -109,7 +109,7 @@ namespace Vehicles.API.Controllers
                 }
 
             }
-            return View(documentType);
+            return View(brand);
         }
 
         // GET: VehicleTypes/Borrar
