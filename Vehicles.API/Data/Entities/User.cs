@@ -2,13 +2,11 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 using Vehicles.Common.Enuims;
 
 namespace Vehicles.API.Data.Entities
 {
-    public class User:IdentityUser
+    public class User : IdentityUser
     {
 
         [Display(Name = "Nombres")]
@@ -36,7 +34,7 @@ namespace Vehicles.API.Data.Entities
         public string Address { get; set; }
 
         [Display(Name = "Foto")]
-        public Guid  ImageId { get; set; }
+        public Guid ImageId { get; set; }
 
         //TODO: Fix  the images path 
         [Display(Name = "Foto")]
@@ -50,5 +48,8 @@ namespace Vehicles.API.Data.Entities
         [Display(Name = "Nombre Completo")]
         public string FullName => $"{FirstName} {LastName}";
 
+        public ICollection<Vehicle> Vehicles { get; set; }
     }
+
 }
+
