@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Vehicles.API.Data;
 using Vehicles.API.Data.Entities;
 
 namespace Vehicles.API
@@ -30,6 +31,9 @@ namespace Vehicles.API
 
 
             });
+
+            services.AddTransient<SeedDb>();
+
 
         }
 
