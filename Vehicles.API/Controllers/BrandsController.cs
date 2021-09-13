@@ -120,14 +120,14 @@ namespace Vehicles.API.Controllers
                 return NotFound();
             }
 
-            DocumentType documentType = await _context.DocumentTypes
+            Brand brand = await _context.Brands
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (documentType == null)
+            if (brand == null)
             {
                 return NotFound();
             }
 
-            _context.DocumentTypes.Remove(documentType);
+            _context.Brands.Remove(brand);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
