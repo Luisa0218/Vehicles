@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Vehicles.API.Data.Entities
 {
@@ -17,8 +14,10 @@ namespace Vehicles.API.Data.Entities
 
 
         [Display(Name = "Precio")]
-        [DisplayFormat(DataFormatString ="{0:C2}")]
+        [DisplayFormat(DataFormatString = "{0:C2}")]
         [Required(ErrorMessage = "El campo {0} es obligatorio.")]
         public decimal Price { get; set; }
+
+        public ICollection<Detail> Details { get; set; }
     }
 }

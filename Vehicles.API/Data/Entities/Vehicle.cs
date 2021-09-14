@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
 
 namespace Vehicles.API.Data.Entities
 {
@@ -43,6 +45,23 @@ namespace Vehicles.API.Data.Entities
         [Display(Name = "Observación")]
         [DataType(DataType.MultilineText)]
         public string Remarks { get; set; }
+
+        public ICollection<VehiclePhoto> VehiclePhotos { get; set; }
+
+        [Display(Name = "# Fotos")]
+        public int VehiclePhotosCount => VehiclePhotos == null ? 0 : VehiclePhotos.Count;
+
+
+        //TODO:Fix the correct path
+        [Display(Name = "Foto")]
+        public string ImageFullPath => VehiclePhotos == null || VehiclePhotos.Count == 0
+            ? $"https://localhost:44318/images/noimage.png"
+            : VehiclePhotos.FirstOrDefault().ImageFullPath;
+
+        public ICollection<History> Histories { get; set; }
+
+        [Display(Name = "# Historias")]
+        public int HistoriesCount => Histories == null ? 0 : Histories.Count;
 
 
     }

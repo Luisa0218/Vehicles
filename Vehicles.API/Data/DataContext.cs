@@ -11,9 +11,12 @@ namespace Vehicles.API.Data.Entities
 
         }
         public DbSet<Brand> Brands{ get; set; }
+        public DbSet<Detail> Details { get; set; }
         public DbSet<DocumentType> DocumentTypes { get; set; }
+        public DbSet<History> Histories { get; set; }
         public DbSet<Procedure> Procedures { get; set; }
         public DbSet<Vehicle> Vehicles { get; set; }
+        public DbSet<VehiclePhoto> VehiclePhotos { get; set; }
         public DbSet<VehicleType> VehicleTypes { get; set; }
       
 
