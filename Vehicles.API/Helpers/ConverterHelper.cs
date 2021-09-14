@@ -31,7 +31,7 @@ namespace Vehicles.API.Helpers
                 PhoneNumber = model.PhoneNumber,
                 UserName = model.Email,
                 UserType = model.UserType,
-                Vehicles = model.Vehicles
+                
 
             };
         }
@@ -50,7 +50,7 @@ namespace Vehicles.API.Helpers
                 LastName = user.LastName,
                 PhoneNumber = user.PhoneNumber,
                 UserType = user.UserType,
-                Vehicles = user.Vehicles
+               
             };
         }
     }
