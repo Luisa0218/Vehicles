@@ -12,7 +12,7 @@ using Vehicles.Common.Enuims;
 namespace Vehicles.API.Controllers
 {
     [Authorize(Roles = "Admin")]
-    public class UserController : Controller
+    public class UsersController : Controller
     {
         private readonly DataContext _context;
         private readonly IUserHelper _userHelper;
@@ -20,7 +20,7 @@ namespace Vehicles.API.Controllers
         private readonly IConverterHelper _converterHelper;
         private readonly IBlobHelper _blobHelper;
 
-        public UserController(DataContext context, IUserHelper userHelper, ICombosHelper combosHelper, IConverterHelper converterHelper,
+        public UsersController(DataContext context, IUserHelper userHelper, ICombosHelper combosHelper, IConverterHelper converterHelper,
             IBlobHelper blobHelper)
         {
             _context = context;
@@ -131,7 +131,7 @@ namespace Vehicles.API.Controllers
                 return NotFound();
             }
 
-            //await _blobHelper.DeleteBlobAsync(user.ImageId, "users");
+            await _blobHelper.DeleteBlobAsync(user.ImageId, "users");
             await _userHelper.DeleteUserAsync(user);
             return RedirectToAction(nameof(Index));
         }
