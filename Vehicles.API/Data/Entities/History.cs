@@ -21,9 +21,14 @@ namespace Vehicles.API.Data.Entities
         [DisplayFormat(DataFormatString = "{0:N0}")]
         public int Mileage { get; set; }
 
-        [Display(Name = "Observación")]
+        [Display(Name = "Mecánico")]
         [DataType(DataType.MultilineText)]
         public string Remarks { get; set; }
+
+        [Display(Name = "Propietario")]
+        [Required(ErrorMessage = "El campo {0} es obligatorio.")]
+        public User User { get; set; }
+
 
         public ICollection<Detail> Details { get; set; }
 
