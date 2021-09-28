@@ -41,7 +41,7 @@ namespace Vehicles.API.Data.Entities
 
         [Display(Name = "Total Mano de Obra")]
         [DisplayFormat(DataFormatString = "{0:C2}")]
-        public decimal TotalLabor => Details == null ? 0 : Details.Sum(x => x.LaborPrice);
+        public decimal  TotalLabor => Details == null ? 0 : Details.Sum(x => x.LaborPrice);
 
         [Display(Name = "Total Repuestos")]
         [DisplayFormat(DataFormatString = "{0:C2}")]
