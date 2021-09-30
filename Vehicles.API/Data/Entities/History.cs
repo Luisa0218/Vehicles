@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Text.Json.Serialization;
 
 namespace Vehicles.API.Data.Entities
 {
@@ -25,6 +26,7 @@ namespace Vehicles.API.Data.Entities
         [DisplayFormat(DataFormatString = "{0:N0}")]
         public int Mileage { get; set; }
 
+        [JsonIgnore]
         [Display(Name = "Mecánico")]
         [DataType(DataType.MultilineText)]
         public string Remarks { get; set; }
